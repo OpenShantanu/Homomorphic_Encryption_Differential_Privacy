@@ -6,9 +6,10 @@ context = ts.context(
     coeff_mod_bit_sizes=[60,40,40,60]
 )
 
+context.global_scale = 2**40
 context.generate_galois_keys()
 
-salaries = ts.ckks_vector(context, [30000, 40000, 50000])
+salaries = ts.CKKSVector(context, [30000, 40000, 50000])
 
 encrypted_sum = salaries.sum()
 encrypted_avg = encrypted_sum * (1/3)
